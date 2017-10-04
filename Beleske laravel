@@ -1,0 +1,43 @@
+Beleske
+
+Svaka laravel aplikacija mora imati svoj jedinstveni key u env fajlu (ono sto pravis sa key generate)
+
+
+- Pitaj dal u id za spoljni kljuc moze da ide tip integer ili mora onaj unsignedInteger (unsigned je bolja praksa, jer ide brza pretraga u bazi jer manje mesta u memoriji zauzima)
+
+
+- snake case sa svim malim slovima i bez razmaka tj sa donjim crtama se koristi za kolone u bazi podataka
+
+- kod hasMany i belongsTo, se kao drugi parametar moze navesti spoljni kljuc, a ima i jos parametara koji se mogu navesti al ne znam sta oni znace.......... npr:
+
+public function team()
+    {
+    	$this->belongsTo(Team::class, 'teams_id');
+    }
+
+    ovde navodis eksplicitno spoljni kljuc zato sto ga nisi nazvao team_id, jer da si ga tako nazvao on bi ga automatski prepoznao! Vidi jos da li ovo ime metode (team()) mora da bude takvo da bi on skontao sta treba da radi.....
+
+- na samom modelu se definise npr. drugacije ime tabele ako hocemo da npr. unosimo imena na srpskom jer laravel sam sve predpostavlja npr predpostavlja da je tabela u mnozini pa bi od modela player automatski trazio tabelu players
+
+- middleware koristi da se zahtevi (valjda iz ruta) presretnu i na neki nacin obrade pre nego sto dodju do kontrolera (mada se u samom middleware-u moze reci da prvo ode do kontrolera pa onda da odradi logiku vezanu za middleware)
+
+- with metoda se moze koristiti i na odnosu vise prema jedan
+
+- da bi povezao tabele preko veze spoljni-primarni kljuc moras u modelima tih tabela imati one metode hasMany() i belongsTo i sl (ima jos nekih) definisane u modelima tabela koje povezujes................
+
+
+
+
+
+
+
+
+PITANJA:
+
+- kako refreshovati migracije bez da se izgube podaci
+
+- kako izbrisati migraciju
+
+- vidi za onaj clrf u gitu
+
+- vidi i za one except i sl naredbe u middlewareu
